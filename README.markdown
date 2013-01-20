@@ -9,8 +9,8 @@ Flight Simulator Panels
 ### Prerequisites for the developer ###
 
 In order to successfully run this code you need to have:
-- A copy of X-Plane (you can download a Demo for free from the [X-Plane](http://www.x-plane.com) website)
-  the Flight Simulator has to be configured as the pictures below, in the Architecture paragraph, show.
+- A copy of X-Plane (* optional * you can download a free Demo from the [X-Plane](http://www.x-plane.com) website)
+	the Flight Simulator has to be configured as the pictures below, in the Architecture paragraph, show.
 - node and npm installed on your machine and available in your path
 - phantomjs installed (it's not possible to have it installed automatically by grunt, sorry)
 
@@ -23,7 +23,14 @@ You're ready to go! Just run
 
 `grunt` (or `grunt dev`)
 
-And your server will be already up and running, waiting for packets from the Flight Simulator
+And your server will be already up and running, waiting for packets from the Flight Simulator.
+
+Even without having X-Plane installed and running, you will be able to open your browser on:
+
+`http://localhost:3000/`
+
+And see the instrument panels widgets running and waiting for IO updates..
+
 
 #### Note for MS Windows users ####
 
