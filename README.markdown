@@ -67,3 +67,16 @@ http://`<node.js server address>`:3000/widget/code
 That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client. 
 
 ![Client code](https://raw.github.com/dmolin/flightSimPanels/master/README/client-code.png)
+
+### Build with Grunt ###
+
+I've been recently playing with Grunt in my latest gig and I was eager to use it again in other projects. 
+I really love Grunt; I love its task based nature; it reminds me of my beloved Ant and it's really easy to grasp and leverage. Moreover, there's node and a LOT of ready-made plugins already available at your fingertips to do nearly EVERYTHING you want. Writing code to zip files, minify, collect, organize folders is deadly easy. It's really difficult to think about NOT using it after you make your feet wet with Grunt ;)
+
+### Unit Testing with Jasmine and PhantomJS ###
+
+This is a beast I'm still dealing with.
+Writing tests with Jasmine is pretty straightforward and it's quite easy to become addicted to that. The tough part is to fit Jasmine/PhantomJS into the whole server architecture.
+My initial stake was to run the Jasmine tests into the same server used to serve the website, in order to have the Selenium Acceptance tests already for free...  It's proving to be not-so-easy as expected.
+I'll likely move to a simple httpd-based server for serving Unit tests soon (the code is still in writing atm).
+
