@@ -23,6 +23,8 @@ It's a small combination of Web enabling technologies to show the aeroplane inst
 
 The Architectural diagram is pretty simple:
 
+![Deadly simple Architectural diagram](https://raw.github.com/dmolin/flightSimPanels/master/README/architecture.png)
+
 X-Plane allows to configure sending its data through a UDP port at specific intervals per second. Through its configuration panels you can choose what information to send and how often (how many times per second):
 
 ![X-Plane Data Output configuration](https://raw.github.com/dmolin/flightSimPanels/master/README/xplane-data-io.png)
