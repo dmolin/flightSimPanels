@@ -62,7 +62,7 @@ Each component carries on also a 'client-side' part (its "view"), provided by it
 
 Each client retrieves much of its logic from the server, with the following call:
 
-http://<node.js server address>:3000/widget/code
+http://`<node.js server address>`:3000/widget/code
 
 That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client. 
 
