@@ -1,0 +1,32 @@
+html, * {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #000;
+}
+
+#widgets {
+	font-size: 1em;
+	overflow: hidden;
+}
+
+.gauge {
+	float: left;
+	/*
+	width: 310px;
+	height: 310px;
+	margin-right: 20px;
+	*/
+	width: 30%;
+	min-width: 200px;
+	margin-right: 2.5%;
+	padding: 5px;
+	position: relative;
+	overflow: hidden;
+}
+
+.gauge canvas {
+	width: 100%;
+}

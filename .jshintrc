@@ -1,0 +1,35 @@
+{
+	// == Enforcing Options ===============================================
+
+
+	// == Relaxing Options ================================================
+	"strict":		false,
+
+	// == Environments ====================================================
+	"devel":		true,
+	"node":			true,
+	"es5":			true,
+	"esnext":		true,
+	"jquery":		true,
+	"browser":		true,
+
+	// == JSLint Legacy ===================================================
+
+
+	// == Undocumented Options ============================================
+
+	"maxerr":		100,
+	"predef": [
+		"module",
+		"require",
+		"load",
+		"action",
+		"layout",
+		"send",
+		"header",
+		"DataView",
+		"tash",
+		"Gauges",
+		"grunt"		
+	]
+}
