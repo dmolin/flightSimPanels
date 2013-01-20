@@ -37,11 +37,11 @@ The codebase is organized around these technologies/frameworks:
 
 #### Backend ####
 
-- Node.js with Railway (soon to be simplified with Express)
+- Node.js with Railway (soon to be moved to a simpler Express)
 - Websockets via Socket.IO
 - Pluggable component architecture with automatic discovery of new widgets
 
-The Server is run by the Railway framework, that simplifies the serving of dynamic pages with the addition of a templating engine and security around a common MVC-based architecture.
+The Server is run by the Railway framework, simplifying the serving of dynamic pages with the addition of a templating engine, routing and an easy to grasp MVC-based architecture.
 Socket.IO is used to communicate in realtime with connected browsers and send them periodic updates.
 Each time a packet is received from the Flight Simulator, the raw binary data is transformed into a complete JSON packet and sent over the Websocket channels to all connected clients.
 
@@ -54,4 +54,16 @@ Each component carries on also a 'client-side' part (its "view"), provided by it
 
 #### Frontend ####
 
+- Railway (frontend js files - bootstrap.js/rails.js)
+- modernizr
+- Tash! Pub/Sub library (see my other project [Tash!](https://github.com/dmolin/tash))
+- HTML5/Canvas (used to render the instrument panels) with [EaselJS](http://www.createjs.com/#!/EaselJS)
+- Component architecture via widgets received by the Node.js server
 
+Each client retrieves much of its logic from the server, with the following call:
+
+http://<node.js server address>:3000/widget/code
+
+That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client. 
+
+![Client code](https://raw.github.com/dmolin/flightSimPanels/master/README/client-code.png)
