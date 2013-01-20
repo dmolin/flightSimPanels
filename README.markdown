@@ -5,6 +5,31 @@ Flight Simulator Panels
 
 ![Example of FlightSimPanels running in a connected browser](https://raw.github.com/dmolin/flightSimPanels/master/README/flightsimpanels.png)
 
+
+### Prerequisites for the developer ###
+
+In order to successfully run this code you need to have:
+- A copy of X-Plane (you can download a Demo for free from the [X-Plane](http://www.x-plane.com) website)
+  the Flight Simulator has to be configured as the pictures below, in the Architecture paragraph, show.
+- node and npm installed on your machine and available in your path
+- phantomjs installed (it's not possible to have it installed automatically by grunt, sorry)
+
+Then, clone the repository, cd into the flightSimPanels folder and run
+
+`npm install`
+
+This will globally install "grunt-cli" (the command line version of Grunt) and create the node_modules folder.
+You're ready to go! Just run
+
+`grunt` (or `grunt dev`)
+
+And your server will be already up and running, waiting for packets from the Flight Simulator
+
+#### Note for MS Windows users ####
+
+Sorry dudes, Windows is a nice toy for playing games and stuffs, but it's not a tool for Web Developers; If you are on a Windows machine, you'll have to use "Cygwin" (good luck with that) or do youserlf a favor and buy a Mac or install Linux..
+
+
 ### Inception ###
 
 This (ongoing) project was born out of the necessity of overcoming the actual limitations of the best Flight Simulator around: [X-Plane](http://www.x-plane.com).
