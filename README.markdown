@@ -31,4 +31,27 @@ X-Plane allows to configure sending its data through a UDP port at specific inte
 
 ![X-Plane Data receiver configuration](https://raw.github.com/dmolin/flightSimPanels/master/README/xplane-network-panel.png)
 
+### Code Architecture ###
+
+The codebase is organized around these technologies/frameworks:
+
+#### Backend ####
+
+- Node.js with Railway (soon to be simplified with Express)
+- Websockets via Socket.IO
+- Pluggable component architecture with automatic discovery of new widgets
+
+The Server is run by the Railway framework, that simplifies the serving of dynamic pages with the addition of a templating engine and security around a common MVC-based architecture.
+Socket.IO is used to communicate in realtime with connected browsers and send them periodic updates.
+Each time a packet is received from the Flight Simulator, the raw binary data is transformed into a complete JSON packet and sent over the Websocket channels to all connected clients.
+
+The data transformation process is realized by a set of "measure" components; These components are dynamically discovered and loaded by the src/app/component/measures/ folder by a "Measure" factory (/src/app/components/Measures.js).
+
+Each one of these component map a specific instrument panel into a corresponding JSON data object.
+Each component carries on also a 'client-side' part (its "view"), provided by its "./client/" subfolder; that folder contains the code that will be packaged, minified and sent to the connected browsers, and executed as a client widget.
+
+![Components](https://raw.github.com/dmolin/flightSimPanels/master/README/components.png)
+
+#### Frontend ####
+
 
