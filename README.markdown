@@ -45,11 +45,11 @@ This (ongoing) project was born out of the necessity of overcoming the actual li
 
 One of the problems of X-Plane is the limitation in running multi-monitor configurations on a single computer. Even running networked computers with multiple licenses of the Flight Simulator is a real problem, especially when using not top-notch computers (like small laptops).
 
-Sometimes we'd like to use our second computer only to display the aeroplane instrument panels, leaving the main computer dealing with the scenery, but that's not currently possible (the external computer has to run a full version of the flight sim and die of a horrible death with its small CPU..)
+Sometimes we'd like to use our second computer only to display the aeroplane instrument panels, leaving the main computer dealing with the scenery, but that's not currently possible (the external computer has to run a full version of the flight sim and die of a horrible death because of its small CPU/GPU (some computers cannot even run X-Plane because lacking of 3D Accelerated GPUs....))
 
 From this necessity came "Flight Simulator Panels" :)
 
-It's a small combination of Web enabling technologies to show the aeroplane instrument panels on networked devices (Computers/Tablets/Mobile phones!) using a recent Canvas/Websocket enable browser (latest Chrome/Safari/Firefox will do).
+It's a small combination of Web enabling technologies to show the aeroplane instrument panels on networked devices (Computers/Tablets/Mobile phones!) using only a recent Canvas/Websocket enable browser (latest Chrome/Safari/Firefox will do). The advantage here is you can avoid running a copy of X-Plane on that computer/device; Only a simple recent browser will suffice. 
 
 ### Architecture ###
 
