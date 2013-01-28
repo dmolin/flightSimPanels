@@ -109,8 +109,6 @@ I really love Grunt; I love its task based nature; it reminds me of my beloved A
 
 This is a beast I'm still dealing with.
 Unit tests have been written with Jasmine and Testacular (setup is still in progress atm).
-I prefer to use a real browser when testing during development. In this regards
-Writing tests with Jasmine is pretty straightforward and it's quite easy to become addicted to that. The tough part is to fit Jasmine/PhantomJS into the whole server architecture.
-My initial stake was to run the Jasmine tests into the same server used to serve the website, in order to have the Selenium Acceptance tests already for free...  It's proving to be not-so-easy as expected.
-I'll likely move to a simple httpd-based server for serving Unit tests soon (the code is still in writing atm).
-
+I prefer to use a real browser when testing during development. 
+Writing tests with Jasmine is pretty straightforward and it's quite easy to become addicted to that. 
+Testacular is quite easy to use, although it requires a bit of manual intervention (the Testacular server has to be launched before executing tests).
