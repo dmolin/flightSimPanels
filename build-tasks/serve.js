@@ -32,6 +32,12 @@ module.exports = function (grunt) {
             console.log("process exiting");
             done();
         });
+
+        server.on('close', function (code) {
+            console.log("process closing");
+            done();
+        });
+
     });
         
 };

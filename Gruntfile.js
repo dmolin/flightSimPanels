@@ -19,10 +19,12 @@ module.exports = function (grunt) {
             async: true
         },
 
+        /* STILL IN DEVELOPMENT
         unit: {
             url: "http://localhost:3000/test",
             dest: "target/unitReports"
         },
+        */
 
         watch: {
             files: [
@@ -35,7 +37,7 @@ module.exports = function (grunt) {
 
     });
 
-    function groupAlias(alias, tasks) {
+    function group(alias, tasks) {
         grunt.registerTask(alias, function (target) {
             return grunt.task.run(tasks.split(" ").map(function (item) {
                 return item + (target ? ":" + target : "");
@@ -44,12 +46,8 @@ module.exports = function (grunt) {
     }
 
     // Register alias tasks
-    //groupAlias("build", "buildi18n buildtemplates buildjs buildspecs buildcss buildmanifest buildhtml");
-    //groupAlias("serve", "staticserver mockserver");
-    //groupAlias("test", "serve jshint build unit acceptance");
-    //groupAlias("dev", "build serve watch");
-    groupAlias("dev", "jshint serve watch");
-    groupAlias("test", "serve jshint unit");
+    group("dev", "jshint serve watch");
+    group("test", "serve jshint unit");
 
     // Default task.
     grunt.registerTask("default", ["dev"]);

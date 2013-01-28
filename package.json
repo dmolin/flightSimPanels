@@ -5,7 +5,7 @@
     "version": "0.0.1",
 
     "scripts": {
-        "install": "npm install -g railway@1.0.1-1; npm install -g grunt-cli@~0.1.4"
+        "install": "npm install -g railway@1.0.1-1; npm install -g grunt-cli@~0.1.4; npm install -g testacular"
     },
 
     "dependencies" : {
@@ -20,6 +20,7 @@
         "railway":          "1.0.1-1",
         "jugglingdb":       ">= 0.1.0",
         "socket.io":        "*",
-        "uglify-js":        "*"
+        "uglify-js":        "*",
+        "testacular":       "latest"
     }
 }

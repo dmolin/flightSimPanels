@@ -7,9 +7,11 @@ var measures = {};
 var socket;
 var sio = require('socket.io');
 var io;
+var setting;
 
 app.configure(function () {
     app.set('defaultLocale', 'en');
+    app.set('log', false);
 });
 
 //Initialise Measures Factory
@@ -20,6 +22,11 @@ socket = dgram.createSocket('udp4', onMessage);
 socket.bind(49100);
 
 io = sio.listen(app);
+for (setting in app.settings.socketIO) {
+	if (app.settings.socketIO.hasOwnProperty(setting)) {
+		io.set(setting, app.settings.socketIO[setting]);
+	}
+}
 io.on('connection', onSIOConnect);
 
 if (!module.parent) {
