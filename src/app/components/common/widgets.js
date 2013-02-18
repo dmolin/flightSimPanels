@@ -3,7 +3,7 @@ tash.namespace('Gauges.Widgets');
 
 Gauges.Widgets.widget = (function(){
 
-	//var widgetRenderedEvent; 
+	//var widgetRenderedEvent;
 
 	function init(context) {
 		console.log("widgets.init");
@@ -11,7 +11,7 @@ Gauges.Widgets.widget = (function(){
 		this.id = Gauges.Widgets.nextId();
 		this.getEl().empty().append( "<canvas width='310' height='310'></canvas>" );
 		this.canvas = $('canvas', this.getEl()).get(0);
-		this.stage = new createjs.Stage(this.canvas);		
+		this.stage = new createjs.Stage(this.canvas);
 		createjs.Ticker.addListener(this);
 
 		this.start();
@@ -64,7 +64,7 @@ Gauges.Widgets.widget = (function(){
 
 	function publishReadyEvent(sequence) {
 		var self = this;
-		sequence.done(); 
+		sequence.done();
 		Gauges.events.MeasuresUpdate.subscribe(function(data){
 			onDataReady.call(self, data);
 		});

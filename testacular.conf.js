@@ -14,8 +14,7 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   'http://code.jquery.com/jquery-1.9.0.min.js',
-  'src/public/javascripts/lib/*min.js',
-  'src/public/javascripts/*.js',
+  'src/public/javascripts/lib/tash*.js',
   'src/**/components/common/**/*.js',
   'src/**/components/**/client/*.js',
   'src/**/*.spec.js'
@@ -34,7 +33,7 @@ reporters = ['progress', 'junit'];
 
 junitReporter = {
   // will be resolved to basePath (in the same way as files/exclude patterns)
-  outputFile: 'test/test-results.xml'
+  outputFile: 'test-results.xml'
 };
 
 // web server port
