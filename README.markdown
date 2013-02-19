@@ -5,6 +5,27 @@ Flight Simulator Panels
 
 ![Example of FlightSimPanels running in a connected browser](https://raw.github.com/dmolin/flightSimPanels/master/README/flightsimpanels.png)
 
+### Inception ###
+
+This (ongoing) project was born out of the necessity of overcoming the actual limitations of the best Flight Simulator around: [X-Plane](http://www.x-plane.com).
+
+![X-Plane in Action!](https://raw.github.com/dmolin/flightSimPanels/master/README/x-plane.png)
+
+One of the problems of X-Plane is the limitation in running multi-monitor configurations on a single computer. Even running networked computers with multiple licenses of the Flight Simulator is a real problem, especially when using not up2date hardware (like small or not recent laptops, without GPU or with a limited CPU power).
+
+When using the flight Simulator, a big part of the display view is taken by the aeroplane cockpit; not much space is left for the visual of the scenery outside the cabin windows. Many phisical add-ons solution are made to bring part of the cockpit outside the screen, on the desk of the flight simmer, like the Saitek add-ons:
+
+![Saitek yoke and panels](https://raw.github.com/dmolin/flightSimPanels/master/README/saitek.png)
+
+The ideal, in this regard, should be to 'remove' the cockpit from the monitor view and use the maximum monitor real estate only for rendering the scenery. A much more cost effective option, to avoid spending a lot of money buying a lot of external hardware, is to simply 'move' the cockpit instrument panels out of the screen into a separate monitor:
+
+![Instrument monitor](http://www.shetland.flyer.co.uk/multiplayer/pics/cockpit_3.jpg)
+
+That's not currently possible with X-Plane; Multi monitor configuration are not possible and displaying the panels onto the screen of a networked computer is prohibitive, since the connected computer has to run a full copy of the flight sim and thus meet the minimum requirements in terms of memory, CPU and GPU.
+
+From this necessity came "Flight Simulator Panels" :)
+
+It's a small combination of Web enabling technologies to show the aeroplane instrument panels on networked devices (Computers/Tablets/Mobile phones!) using only a recent Canvas/Websocket enable browser (latest Chrome/Safari/Firefox will do). The advantage here is you can avoid running a copy of X-Plane on that computer/device; Only a simple recent browser will suffice.
 
 ### Prerequisites for the developer ###
 
@@ -36,20 +57,6 @@ And see the instrument panels widgets running and waiting for IO updates..
 
 Sorry dudes, Windows is a nice toy for playing games and stuffs, but it's not a tool for Web Developers; If you are on a Windows machine, you'll have to use "Cygwin" (good luck with that) or do youserlf a favor and buy a Mac or install Linux..
 
-
-### Inception ###
-
-This (ongoing) project was born out of the necessity of overcoming the actual limitations of the best Flight Simulator around: [X-Plane](http://www.x-plane.com).
-
-![X-Plane in Action!](https://raw.github.com/dmolin/flightSimPanels/master/README/x-plane.png)
-
-One of the problems of X-Plane is the limitation in running multi-monitor configurations on a single computer. Even running networked computers with multiple licenses of the Flight Simulator is a real problem, especially when using not top-notch computers (like small laptops).
-
-Sometimes we'd like to use our second computer only to display the aeroplane instrument panels, leaving the main computer dealing with the scenery, but that's not currently possible (the external computer has to run a full version of the flight sim and die of a horrible death because of its small CPU/GPU (some computers cannot even run X-Plane because lacking of 3D Accelerated GPUs....))
-
-From this necessity came "Flight Simulator Panels" :)
-
-It's a small combination of Web enabling technologies to show the aeroplane instrument panels on networked devices (Computers/Tablets/Mobile phones!) using only a recent Canvas/Websocket enable browser (latest Chrome/Safari/Firefox will do). The advantage here is you can avoid running a copy of X-Plane on that computer/device; Only a simple recent browser will suffice. 
 
 ### Architecture ###
 
@@ -96,19 +103,19 @@ Each client retrieves much of its logic from the server, with the following call
 
 http://`<node.js server address>`:3000/widget/code
 
-That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client. 
+That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client.
 
 ![Client code](https://raw.github.com/dmolin/flightSimPanels/master/README/client-code.png)
 
 ### Build with Grunt ###
 
-I've been recently playing with Grunt in my latest gig and I was eager to use it again in other projects. 
+I've been recently playing with Grunt in my latest gig and I was eager to use it again in other projects.
 I really love Grunt; I love its task based nature; it reminds me of my beloved Ant and it's really easy to grasp and leverage. Moreover, there's node and a LOT of ready-made plugins already available at your fingertips to do nearly EVERYTHING you want. Writing code to zip files, minify, collect, organize folders is deadly easy. It's really difficult to think about NOT using it after you make your feet wet with Grunt ;)
 
 ### Unit Testing with Jasmine and Testacular ###
 
 This is a beast I'm still dealing with.
 Unit tests have been written with Jasmine and Testacular (setup is still in progress atm).
-I prefer to use a real browser when testing during development. 
-Writing tests with Jasmine is pretty straightforward and it's quite easy to become addicted to that. 
+I prefer to use a real browser when testing during development.
+Writing tests with Jasmine is pretty straightforward and it's quite easy to become addicted to that.
 Testacular is quite easy to use, although it requires a bit of manual intervention (the Testacular server has to be launched before executing tests).
