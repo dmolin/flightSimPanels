@@ -64,11 +64,13 @@ The Architectural diagram is pretty simple:
 
 ![Deadly simple Architectural diagram](https://raw.github.com/dmolin/flightSimPanels/master/README/architecture.png)
 
-X-Plane allows to configure sending its data through a UDP port at specific intervals per second. Through its configuration panels you can choose what information to send and how often (how many times per second):
+X-Plane allows you to configure sending its data through a UDP port to an external computer, at specific intervals per second. Through its configuration panels you can choose what information to send and how often (how many times per second):
 
 ![X-Plane Data Output configuration](https://raw.github.com/dmolin/flightSimPanels/master/README/xplane-data-io.png)
 
 ![X-Plane Data receiver configuration](https://raw.github.com/dmolin/flightSimPanels/master/README/xplane-network-panel.png)
+
+The purpose of this feature is probably to drive external hardware or training stations but nothing prevent us to use this feature to simply drive an external computer displaying the cockpit instrument panels!
 
 ### Code Architecture ###
 
