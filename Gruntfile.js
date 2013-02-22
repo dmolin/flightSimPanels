@@ -3,6 +3,7 @@ module.exports = function (grunt) {
     grunt.loadTasks("build-tasks");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-watch");
+    grunt.loadNpmTasks("grunt-testacular");
 
     grunt.initConfig({
         jshint: [
@@ -33,6 +34,19 @@ module.exports = function (grunt) {
                 "src/**/**/*.js"
             ],
             tasks: "jshint"
+        },
+
+        testacular: {
+            unit: {
+                options: {
+                    configFile: "testacular.conf.js",
+                    autoWatch: true,
+                    browsers: ['PhantomJS'],
+                    reporters: ['dots'],
+                    runnerPort: 9100,
+                    keepalive: true
+                }
+            }
         }
 
     });
@@ -46,8 +60,8 @@ module.exports = function (grunt) {
     }
 
     // Register alias tasks
-    group("dev", "jshint serve watch");
-    group("test", "serve jshint unit");
+    group("dev", "jshint serve testacular");
+    group("test", "serve jshint testacular");
 
     // Default task.
     grunt.registerTask("default", ["dev"]);

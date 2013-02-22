@@ -14,6 +14,7 @@
         "grunt-contrib-jshint": "~0.1.0",
         "grunt-contrib-watch": "~0.1.0",
         "grunt-jasmine-task": "~0.2.3",
+        "grunt-testacular"  : "*",
         "ejs":              "*",
         "ejs-ext":          "*",
         "express":          "~2.x",

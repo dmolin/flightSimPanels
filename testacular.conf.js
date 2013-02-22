@@ -22,7 +22,6 @@ files = [
 
 // list of files to exclude
 exclude = [
-  //'adapter/require.src.js'
   'src/app/components/Measure.js'
 ];
 
