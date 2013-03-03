@@ -37,7 +37,6 @@ In order to successfully run this code you need to have:
 - A copy of X-Plane (* optional * you can download a free Demo from the [X-Plane](http://www.x-plane.com) website)
 	the Flight Simulator has to be configured as the pictures below, in the Architecture paragraph, show.
 - node and npm installed on your machine and available in your path
-- phantomjs installed (it's not possible to have it installed automatically by grunt, sorry)
 
 Then, clone the repository, cd into the flightSimPanels folder and run
 
