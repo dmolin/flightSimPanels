@@ -7,7 +7,7 @@ Flight Simulator Panels
 
 See the Code in action in a Browser connected with a Flight Simulator (X-Plane):
 
-![https://vimeo.com/60944060](https://vimeo.com/60944060)
+[![ScreenShot](https://raw.github.com/dmolin/flightSimPanels/master/README/techdemo.png)](https://vimeo.com/60944060)
 
 ### Inception ###
 
