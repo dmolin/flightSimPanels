@@ -11,7 +11,7 @@ function treeWalker(folder, cfg) {
 		files,
 		retlist = (cfg && cfg.list)||[];
 
-	files = fs.readdirSync(folder);	
+	files = fs.readdirSync(folder);
 
 	for (file in files) {
 		if (files.hasOwnProperty(file)) {
@@ -33,7 +33,7 @@ function treeWalker(folder, cfg) {
 		}
 	}
 
-	return retlist;	
+	return retlist;
 }
 
 function addCode(list, ext, config) {
@@ -43,7 +43,7 @@ function addCode(list, ext, config) {
 		cfg = {minify: config.minify||false, folder:config.folder||"../test/libs/jasmine/"},
 		//files = fs.readdirSync(cfg.folder);
 		files = treeWalker(cfg.folder, config);
-	
+
 	for (file in files) {
 		if (files.hasOwnProperty(file)) {
 			filename = files[file];
@@ -96,7 +96,7 @@ action('code', function() {
 	layout(false);
 	header('Content-Type', 'application/javascript');
 	send(getFiles("js", {
-		minify:true, 
+		minify:true,
 		first:[
 			"../test/libs/jasmine/jasmine.js"
 		]

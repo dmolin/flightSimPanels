@@ -5,6 +5,10 @@ Flight Simulator Panels
 
 ![Example of FlightSimPanels running in a connected browser](https://raw.github.com/dmolin/flightSimPanels/master/README/flightsimpanels.png)
 
+See the Code in action in a Browser connected with a Flight Simulator (X-Plane):
+
+![https://vimeo.com/60944060](https://vimeo.com/60944060)
+
 ### Inception ###
 
 This (ongoing) project was born out of the necessity of overcoming the actual limitations of the best Flight Simulator around: [X-Plane](http://www.x-plane.com).
