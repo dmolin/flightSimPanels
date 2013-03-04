@@ -15,14 +15,14 @@ files = [
   JASMINE_ADAPTER,
   'http://code.jquery.com/jquery-1.9.0.min.js',
   'src/public/javascripts/lib/tash*.js',
-  'src/**/components/common/**/*.js',
-  'src/**/components/**/client/*.js',
+  'src/**/common/**/*.js',
+  'src/**/client/*.js',
   'src/**/*.spec.js'
 ];
 
 // list of files to exclude
 exclude = [
-  'src/app/components/Measure.js'
+  'src/services/Measure.js'
 ];
 
 // use dots reporter, as travis terminal does not support escaping sequences

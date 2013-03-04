@@ -17,15 +17,8 @@ module.exports = function (grunt) {
         }*/
 
         serve: {
-            async: true
+            //async: true
         },
-
-        /* STILL IN DEVELOPMENT
-        unit: {
-            url: "http://localhost:3000/test",
-            dest: "target/unitReports"
-        },
-        */
 
         watch: {
             files: [
@@ -60,7 +53,7 @@ module.exports = function (grunt) {
     }
 
     // Register alias tasks
-    group("dev", "jshint serve testacular");
+    group("dev", "jshint serve");
     group("test", "serve jshint testacular");
 
     // Default task.

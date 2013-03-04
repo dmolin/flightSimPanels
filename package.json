@@ -2,10 +2,10 @@
     "name": "flightSimPanels",
     "main": "server.js",
     "engines": ["node >= 0.4.0"],
-    "version": "0.0.1",
+    "version": "0.0.2",
 
     "scripts": {
-        "install": "npm install -g railway@1.0.1-1; npm install -g grunt-cli@~0.1.4; npm install -g testacular"
+        "install": "npm install -g grunt-cli@~0.1.4; npm install -g testacular"
     },
 
     "dependencies" : {
@@ -15,11 +15,7 @@
         "grunt-contrib-watch": "~0.1.0",
         "grunt-jasmine-task": "~0.2.3",
         "grunt-testacular"  : "*",
-        "ejs":              "*",
-        "ejs-ext":          "*",
-        "express":          "~2.x",
-        "railway":          "1.0.1-1",
-        "jugglingdb":       ">= 0.1.0",
+        "express" : "~3.1.0",
         "socket.io":        "*",
         "uglify-js":        "*",
         "testacular":       "latest"

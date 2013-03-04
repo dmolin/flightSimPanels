@@ -8,14 +8,14 @@ module.exports = function (grunt) {
         grunt.log.writeln("Starting webserver...");
 
         server = grunt.util.spawn({
-            cmd: "railway",
+            cmd: "node",
             args: ["server"],
             opts: { cwd: process.cwd() + "/src" }
         }, function (err, result, code) {
             if (err) {
                 grunt.log.error("Error running webserver. err=" + err);
                 return done(false);
-            } 
+            }
 
             done(result);
         });
@@ -39,5 +39,5 @@ module.exports = function (grunt) {
         });
 
     });
-        
+
 };

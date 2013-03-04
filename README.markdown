@@ -3,23 +3,23 @@ Flight Simulator Panels
 
 ### See your Flight Simulator Instrument Panels from your browser! ###
 
-![Example of FlightSimPanels running in a connected browser](https://raw.github.com/dmolin/flightSimPanels/master/README/flightsimpanels.png)
+![Example of FlightSimPanels running in a connected browser](https://raw.github.com/dmolin/flightSimPanels/master/assets/flightsimpanels.png)
 
 See the Code in action in a Browser connected with a Flight Simulator (X-Plane):
 
-[![ScreenShot](https://raw.github.com/dmolin/flightSimPanels/master/README/techdemo.png)](https://vimeo.com/60944060)
+[![ScreenShot](https://raw.github.com/dmolin/flightSimPanels/master/assets/techdemo.png)](https://vimeo.com/60944060)
 
 ### Inception ###
 
 This (ongoing) project was born out of the necessity of overcoming the actual limitations of the best Flight Simulator around: [X-Plane](http://www.x-plane.com).
 
-![X-Plane in Action!](https://raw.github.com/dmolin/flightSimPanels/master/README/x-plane.png)
+![X-Plane in Action!](https://raw.github.com/dmolin/flightSimPanels/master/assets/x-plane.png)
 
 One of the problems of X-Plane is the limitation in running multi-monitor configurations on a single computer. Even running networked computers with multiple licenses of the Flight Simulator is a real problem, especially when using not up2date hardware (like small or not recent laptops, without GPU or with a limited CPU power).
 
 When using the flight Simulator, a big part of the display view is taken by the aeroplane cockpit; not much space is left for the visual of the scenery outside the cabin windows. Many phisical add-ons solution are made to bring part of the cockpit outside the screen, on the desk of the flight simmer, like the Saitek add-ons:
 
-![Saitek yoke and panels](https://raw.github.com/dmolin/flightSimPanels/master/README/saitek-panels.jpg)
+![Saitek yoke and panels](https://raw.github.com/dmolin/flightSimPanels/master/assets/saitek-panels.jpg)
 
 The ideal, in this regard, should be to 'remove' the cockpit from the monitor view and use the maximum monitor real estate only for rendering the scenery. A much more cost effective option, to avoid spending a lot of money buying a lot of external hardware, is to simply 'move' the cockpit instrument panels out of the screen into a separate monitor:
 
@@ -65,13 +65,13 @@ Sorry dudes, Windows is a nice toy for playing games and stuffs, but it's not a 
 
 The Architectural diagram is pretty simple:
 
-![Deadly simple Architectural diagram](https://raw.github.com/dmolin/flightSimPanels/master/README/architecture.png)
+![Deadly simple Architectural diagram](https://raw.github.com/dmolin/flightSimPanels/master/assets/architecture.png)
 
 X-Plane allows you to configure sending its data through a UDP port to an external computer, at specific intervals per second. Through its configuration panels you can choose what information to send and how often (how many times per second):
 
-![X-Plane Data Output configuration](https://raw.github.com/dmolin/flightSimPanels/master/README/xplane-data-io.png)
+![X-Plane Data Output configuration](https://raw.github.com/dmolin/flightSimPanels/master/assets/xplane-data-io.png)
 
-![X-Plane Data receiver configuration](https://raw.github.com/dmolin/flightSimPanels/master/README/xplane-network-panel.png)
+![X-Plane Data receiver configuration](https://raw.github.com/dmolin/flightSimPanels/master/assets/xplane-network-panel.png)
 
 The purpose of this feature is probably to drive external hardware or training stations but nothing prevent us to use this feature to simply drive an external computer displaying the cockpit instrument panels!
 
@@ -94,7 +94,7 @@ The data transformation process is realized by a set of "measure" components; Th
 Each one of these component map a specific instrument panel into a corresponding JSON data object.
 Each component carries on also a 'client-side' part (its "view"), provided by its "./client/" subfolder; that folder contains the code that will be packaged, minified and sent to the connected browsers, and executed as a client widget.
 
-![Components](https://raw.github.com/dmolin/flightSimPanels/master/README/components.png)
+![Components](https://raw.github.com/dmolin/flightSimPanels/master/assets/components.png)
 
 #### Frontend ####
 
@@ -110,7 +110,7 @@ http://`<node.js server address>`:3000/widget/code
 
 That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client.
 
-![Client code](https://raw.github.com/dmolin/flightSimPanels/master/README/client-code.png)
+![Client code](https://raw.github.com/dmolin/flightSimPanels/master/assets/client-code.png)
 
 ### Build with Grunt ###
 
