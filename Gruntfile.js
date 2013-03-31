@@ -10,12 +10,6 @@ module.exports = function (grunt) {
             "src/app/**/*.js"
         ],
 
-        /* TODO: use the server task for the unit tests
-        server: {
-            port: 9000,
-            base: './'
-        }*/
-
         serve: {
             //async: true
         },

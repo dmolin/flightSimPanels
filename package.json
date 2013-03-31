@@ -5,12 +5,12 @@
     "version": "0.0.2",
 
     "scripts": {
-        "install": "npm install -g grunt-cli@~0.1.4; npm install -g testacular"
+        "install": "npm install -g grunt-cli@0.1.6; npm install -g testacular"
     },
 
     "dependencies" : {
         "grunt":  "~0.4.0",
-        "grunt-cli": "~0.1.4",
+        "grunt-cli": "0.1.6",
         "grunt-contrib-jshint": "~0.1.0",
         "grunt-contrib-watch": "~0.1.0",
         "grunt-jasmine-task": "~0.2.3",

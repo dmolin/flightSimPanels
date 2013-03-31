@@ -50,7 +50,6 @@ if (!module.parent) {
 function onSIOConnect (socket) {
 	socket.emit("connected", {});
 	//handle client messages (if any)
-	//...
 }
 
 function onMessage ( message ) {
