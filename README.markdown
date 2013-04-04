@@ -18,7 +18,6 @@ This (ongoing) project was born out of the necessity of overcoming the actual li
 One of the problems of X-Plane is the limitation in running multi-monitor configurations on a single computer. Even running networked computers with multiple licenses of the Flight Simulator is a real problem, especially when using not up2date hardware (like small or not recent laptops, without GPU or with a limited CPU power).
 
 When using the flight Simulator, a big part of the display view is taken by the aeroplane cockpit; not much space is left for the visual of the scenery outside the cabin windows. Many phisical add-ons solution are made to bring part of the cockpit outside the screen, on the desk of the flight simmer, like the Saitek add-ons:
-
 ![Saitek yoke and panels](https://raw.github.com/dmolin/flightSimPanels/master/assets/saitek-panels.jpg)
 
 The ideal, in this regard, should be to 'remove' the cockpit from the monitor view and use the maximum monitor real estate only for rendering the scenery. A much more cost effective option, to avoid spending a lot of money buying a lot of external hardware, is to simply 'move' the cockpit instrument panels out of the screen into a separate monitor:
