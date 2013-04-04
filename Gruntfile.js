@@ -1,5 +1,4 @@
 module.exports = function (grunt) {
-
     grunt.loadTasks("build-tasks");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-watch");
