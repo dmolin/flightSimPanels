@@ -49,14 +49,15 @@ function init() {
 //look into the payload and create the corresponding measure by type
 function get(payload) {
 	var measure = null;
-	var xtype = payload[0], 
+	var xtype = payload[0],
 		raw = new Int8Array(Array.prototype.splice.call(payload, 4, 32));
-	
+
 	if (!lut[xtype]) { return null; }
 
 	if (typeof lut[xtype].callback === "function") {
 		//call it.
-		lut[xtype].data = lut[xtype].callback(raw, Helper);
+		//Thanks to Adam Veselič for noticing that DataView works only with an ArrayBuffer (not a View over an ArrayBuffer)
+		lut[xtype].data = lut[xtype].callback(raw.buffer, Helper);
 	}
 	return lut[xtype];
 }
