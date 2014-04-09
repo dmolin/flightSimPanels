@@ -28,9 +28,11 @@ app.get('/heartbeat',  function(req, res) {
 app.use(notFound.index);
 
 server = http.createServer(app);
+io = sio.listen(server);
 
 require('./routes/assetsRoutes').init(app);
 require('./routes/widgetsRoutes').init(app);
+require('./routes/testMessages').init(app, io);
 
 //Initialise Measures Factory
 Measure.init();
@@ -39,7 +41,6 @@ Measure.init();
 socket = dgram.createSocket('udp4', onMessage);
 socket.bind(49100);
 
-io = sio.listen(server);
 for (setting in app.settings.socketIO) {
 	if (app.settings.socketIO.hasOwnProperty(setting)) {
 		io.set(setting, app.settings.socketIO[setting]);
@@ -48,7 +49,7 @@ for (setting in app.settings.socketIO) {
 io.on('connection', onSIOConnect);
 
 if (!module.parent) {
-    var port = process.env.PORT || 3000;
+    var port = process.env.PORT || 9000;
     server.listen(port);
 	console.log("FlighSimPanels server listening on port %d within %s environment", port, app.settings.env);
 }
