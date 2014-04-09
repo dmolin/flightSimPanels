@@ -2,7 +2,7 @@ module.exports = function (grunt) {
     grunt.loadTasks("build-tasks");
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-testacular");
+    grunt.loadNpmTasks('grunt-cafe-mocha');
 
     grunt.initConfig({
         jshint: [
@@ -22,6 +22,16 @@ module.exports = function (grunt) {
             tasks: "jshint"
         },
 
+        cafemocha: {
+            test: {
+                src: 'test/*.js',
+                options: {
+                    ui: 'bdd',
+                    reporter: 'spec'
+                }
+            }
+        },
+
         testacular: {
             unit: {
                 options: {
@@ -37,17 +47,9 @@ module.exports = function (grunt) {
 
     });
 
-    function group(alias, tasks) {
-        grunt.registerTask(alias, function (target) {
-            return grunt.task.run(tasks.split(" ").map(function (item) {
-                return item + (target ? ":" + target : "");
-            }));
-        });
-    }
-
     // Register alias tasks
-    group("dev", "jshint serve");
-    group("test", "serve jshint testacular");
+    grunt.registerTask("dev", ["jshint", "serve"]);
+    grunt.registerTask('test', ['jshint','cafemocha:test']);
 
     // Default task.
     grunt.registerTask("default", ["dev"]);

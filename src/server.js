@@ -6,6 +6,7 @@ var express = require("express"),
 	dgram = require('dgram'),
 	http = require("http"),
 	Measure = require('./services/Measure'),
+	notFound = require('./lib/middleware/notFound'),
 	app = express();
 
 var server;
@@ -20,6 +21,11 @@ app.configure(function() {
 	app.use(express.bodyParser());
 	app.use(express['static'](path.join(__dirname, 'public')));
 });
+
+app.get('/heartbeat',  function(req, res) {
+	res.json(200, 'OK');
+});
+app.use(notFound.index);
 
 server = http.createServer(app);
 
@@ -46,6 +52,8 @@ if (!module.parent) {
     server.listen(port);
 	console.log("FlighSimPanels server listening on port %d within %s environment", port, app.settings.env);
 }
+
+module.exports = app;
 
 function onSIOConnect (socket) {
 	socket.emit("connected", {});
