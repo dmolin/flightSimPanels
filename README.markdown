@@ -41,7 +41,13 @@ Then, clone the repository, cd into the flightSimPanels folder and run
 
 `npm install`
 
-This will globally install "grunt-cli" (the command line version of Grunt) and create the node_modules folder.
+- Install the command line version of Grunt
+This is a dependency and the best is for you to do that. Please, ensure a fairly recent version of the command line interface is installed (version > 0.1.10). Run the following command:
+
+'npm install -g grunt-cli'
+
+This will globally install "grunt-cli" (the command line version of Grunt); If you want to keep it local to this project, then remove the "-g" but keep in mind that the 'grunt' executable then won't be in your path; you'll find it under ./node-modules/.bin/
+
 You're ready to go! Just run
 
 `grunt` (or `grunt dev`)
@@ -53,6 +59,11 @@ Even without having X-Plane installed and running, you will be able to open your
 `http://localhost:3000/`
 
 And see the instrument panels widgets running and waiting for IO updates..
+
+#### Testing the server from the command line ####
+
+An easy way to run tests on the server and check everything's working smooth is to simply run the server (running 'grunt') and then open another console, head to the ./test-scripts folder and then run one of the shell scripts you'll find there.
+Each shell script will issue a series of network requests to a specific test URL in the server, simulating data coming from a fictitious installation of X-Plane. This is tremendoulsy useful when implementing a new instrument panel.
 
 
 #### Note for MS Windows users ####
@@ -80,7 +91,7 @@ The codebase is organized around these technologies/frameworks:
 
 #### Backend ####
 
-- Node.js with Railway (soon to be moved to a simpler Express)
+- Node.js with Express
 - Websockets via Socket.IO
 - Pluggable component architecture with automatic discovery of new widgets
 
@@ -97,7 +108,6 @@ Each component carries on also a 'client-side' part (its "view"), provided by it
 
 #### Frontend ####
 
-- Railway (frontend js files - bootstrap.js/rails.js)
 - modernizr
 - Tash! Pub/Sub library (see my other project [Tash!](https://github.com/dmolin/tash))
 - HTML5/Canvas (used to render the instrument panels) with [EaselJS](http://www.createjs.com/#!/EaselJS)
@@ -107,7 +117,7 @@ Each client retrieves much of its logic from the server, with the following call
 
 http://`<node.js server address>`:3000/widget/code
 
-That URL map to a Railway controller that load all of the "measure" components client subfolders, minifies their content and send the payload to the client.
+That URL map to an Express endpoint that load all of the "measure" components client subfolders, minifies their content and send the payload to the client.
 
 ![Client code](https://raw.github.com/dmolin/flightSimPanels/master/assets/client-code.png)
 
@@ -116,10 +126,8 @@ That URL map to a Railway controller that load all of the "measure" components c
 I've been recently playing with Grunt in my latest gig and I was eager to use it again in other projects.
 I really love Grunt; I love its task based nature; it reminds me of my beloved Ant and it's really easy to grasp and leverage. Moreover, there's node and a LOT of ready-made plugins already available at your fingertips to do nearly EVERYTHING you want. Writing code to zip files, minify, collect, organize folders is deadly easy. It's really difficult to think about NOT using it after you make your feet wet with Grunt ;)
 
-### Unit Testing with Jasmine and Testacular ###
+### Unit Testing with mocha and Supertest ###
 
-This is a beast I'm still dealing with.
-Unit tests have been written with Jasmine and Testacular (setup is still in progress atm).
-I prefer to use a real browser when testing during development.
-Writing tests with Jasmine is pretty straightforward and it's quite easy to become addicted to that.
-Testacular is quite easy to use, although it requires a bit of manual intervention (the Testacular server has to be launched before executing tests).
+Unit tests have been written with mocha and Supertest.
+A basic setup is in place, with just a couple of tests to check the process is working the right way.
+Expect much more in the near future...
