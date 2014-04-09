@@ -1,23 +1,23 @@
 {
     "name": "flightSimPanels",
     "main": "server.js",
-    "engines": ["node >= 0.4.0"],
+    "engines": ["node >= 0.10.0"],
     "version": "0.0.2",
 
     "scripts": {
-        "install": "npm install -g grunt-cli@0.1.6; npm install -g testacular"
+        "install": "npm install -g grunt-cli@~0.1.13"
     },
 
-    "dependencies" : {
-        "grunt":  "~0.4.0",
-        "grunt-cli": "0.1.6",
+    "devDependencies": {
+        "grunt":  "~0.4.4",
         "grunt-contrib-jshint": "~0.1.0",
         "grunt-contrib-watch": "~0.1.0",
         "grunt-jasmine-task": "~0.2.3",
-        "grunt-testacular"  : "*",
+        "uglify-js":        "*"
+    },
+
+    "dependencies" : {
         "express" : "~3.1.0",
-        "socket.io":        "*",
-        "uglify-js":        "*",
-        "testacular":       "latest"
+        "socket.io":        "*"
     }
 }
