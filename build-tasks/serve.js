@@ -1,6 +1,6 @@
 /*global module: true, require: true */
 module.exports = function (grunt) {
-    grunt.registerTask("serve", "Start Railway Server", function () {
+    grunt.registerTask("serve", "Start Server", function () {
         var done = grunt.config.data.serve.async ? function () {} : this.async(),
             cp = require("child_process"),
             server;

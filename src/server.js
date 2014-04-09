@@ -49,7 +49,7 @@ for (setting in app.settings.socketIO) {
 io.on('connection', onSIOConnect);
 
 if (!module.parent) {
-    var port = process.env.PORT || 9000;
+    var port = process.env.PORT || 3000;
     server.listen(port);
 	console.log("FlighSimPanels server listening on port %d within %s environment", port, app.settings.env);
 }

@@ -30,19 +30,6 @@ module.exports = function (grunt) {
                     reporter: 'spec'
                 }
             }
-        },
-
-        testacular: {
-            unit: {
-                options: {
-                    configFile: "testacular.conf.js",
-                    autoWatch: true,
-                    browsers: ['PhantomJS'],
-                    reporters: ['dots'],
-                    runnerPort: 9100,
-                    keepalive: true
-                }
-            }
         }
 
     });
