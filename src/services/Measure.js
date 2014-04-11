@@ -52,6 +52,7 @@ function get(payload) {
 	var xtype = payload[0],
 		raw = new Int8Array(Array.prototype.splice.call(payload, 4, 32));
 
+	//console.log("raw message", raw);
 	if (!lut[xtype]) { return null; }
 
 	if (typeof lut[xtype].callback === "function") {

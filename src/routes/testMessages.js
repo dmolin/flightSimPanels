@@ -15,7 +15,8 @@ module.exports = {
 function onMockFSMessage ( req, res ) {
     var measureName = req.params.measure;
 
-    //console.log("MSG", message );
+    console.log("measure", measureName);
+    console.log("measures", Measure.getRegisteredMeasures() );
     var measure = findMeasureByName(Measure.getRegisteredMeasures(), measureName);
     measure.data = mockMeasureData(req.query);
 
@@ -30,7 +31,9 @@ function onMockFSMessage ( req, res ) {
 }
 
 function findMeasureByName(list, name) {
+    console.log("find " + name + " in " + list);
     var res = list.filter(function(node){
+        //console.log("node.name", node.name);
         return node.name === name;
     });
     return res.length > 0 ? res[0] : undefined;
