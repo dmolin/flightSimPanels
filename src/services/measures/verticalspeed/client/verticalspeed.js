@@ -7,6 +7,9 @@ tash.namespace('Gauges.Widgets');
 Gauges.Widgets.verticalspeed = {
 
 	update: function (payload) {
+		//NOTE: when determining angle we need to
+		//      convert these absolute values into the local coord. system
+		//		that is, subtract 90deg (the zero position is 270deg)
 		var angles = {
 			/*
 			"10": 4,
@@ -30,21 +33,27 @@ Gauges.Widgets.verticalspeed = {
 			"190": 303,
 			"200": 316
 			*/
-			"0": -90
+			"0": 0
 		};
 
 		console.log("update", payload.verticalspeed);
 
 		var data = payload.verticalspeed,
-			angleLowIdx = (parseInt(data.indicated/10,10)-1)*10,
+			speed = parseInt(data.speed,10);
+			/*
+			angleLowIdx = (parseInt(speed/10,10)-1)*10,
 			angleHiIdx = angleLowIdx+10,
-			angleLow = angles[angleLowIdx],
-			angleHi = angles[angleHiIdx],
-			remainder = data.indicated % angleLowIdx,
+			angleLow = angles[angleLowIdx] || angles[0],
+			angleHi = angles[angleHiIdx] || angles[0],
+			remainder = angleLowIdx ? speed % angleLowIdx : 1,
 			increment = (angleHi - angleLow) / 10 * remainder;
+			*/
 
-		$(this.canvas).attr('data-speed', data.indicated);
-		this.dial.bitmap.rotation = (angleLow + increment);
+		$(this.canvas).attr('data-speed', speed);
+		/*
+		this.dial.bitmap.rotation = this._convertIntoLocalCoord(angleLow + increment);
+		*/
+		this.dial.bitmap.rotation = this._convertIntoLocalCoord(this._calculateAngle(speed + this._calculateVariance(speed)));
 	},
 
 	render: function (/*data*/) {
@@ -60,10 +69,10 @@ Gauges.Widgets.verticalspeed = {
 				this.dial = new Gauges.Widgets.StageImage("assets/widget/verticalspeed/verticalspeed-dial", this, {
 					load: function(img) {
 						img.bitmap.x = 150;
-						img.bitmap.y = 155;
+						img.bitmap.y = 150;
 						img.bitmap.regX = 11;
 						img.bitmap.regY = 90;
-						img.bitmap.rotation = 0;
+						img.bitmap.rotation = 270;
 						sequence.next();
 					}
 				});
@@ -71,9 +80,43 @@ Gauges.Widgets.verticalspeed = {
 			.add( this, function(sequence) {
 				this.publishReadyEvent(sequence);
 				//set the dial to zero speed
-				this.update({verticalspeed:{indicated:0}});
+				this.update({verticalspeed:{speed:0}});
 			})
 			.start();
+	},
+
+	_calculateAngle: function(speed) {
+		var angle = Math.abs(speed) * 180 / 2050;
+		if(speed < 0) {
+			angle = angle * -1;
+		}
+		return angle;
+	},
+
+	_calculateVariance: function(speed) {
+		var firstVariancePerSpeedPoints = 50 / (1000 - 100);
+		var secondVariancePerSpeedPoints = 50 / (1500 - 1000);
+		var absSpeed = Math.abs(speed);
+		var outcome = 0;
+
+		//from 200 > 1000 = from 0 to -50 offset
+		//from 1001 > 1500 = from -50 to 0 offset
+		if(absSpeed > 0 && absSpeed <= 1000) {
+			outcome =  -1 * ((absSpeed - 0) * firstVariancePerSpeedPoints);
+		} else if (absSpeed > 1000 && absSpeed < 1500) {
+			outcome =  -1 * (50 - ((absSpeed - 1000) * secondVariancePerSpeedPoints));
+		}
+		if(speed < 0) {
+			outcome = outcome * -1;
+		}
+		return outcome;
+	},
+
+	//the VSI gause has the ZERO position set to 270deg.
+	//to convert the angle provided into the local coord system we subtract 90.
+	//if the result is < 0, we add 360
+	_convertIntoLocalCoord: function(angle) {
+		return angle - 90 < 0 ? angle - 90 + 360 : angle - 90;
 	}
 };
 
