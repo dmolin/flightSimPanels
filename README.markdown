@@ -22,7 +22,7 @@ When using the flight Simulator, a big part of the display view is taken by the 
 
 The ideal, in this regard, should be to 'remove' the cockpit from the monitor view and use the maximum monitor real estate only for rendering the scenery. A much more cost effective option, to avoid spending a lot of money buying a lot of external hardware, is to simply 'move' the cockpit instrument panels out of the screen into a separate monitor:
 
-![Instrument monitor](http://www.shetland.flyer.co.uk/multiplayer/pics/cockpit_3.jpg)
+![Instrument monitor](http://www.extremetech.com/wp-content/uploads/2011/12/flight-simulation-crt-monitors.jpg)
 
 That's not currently possible with X-Plane; Multi monitor configuration are not possible and displaying the panels onto the screen of a networked computer is prohibitive, since the connected computer has to run a full copy of the flight sim and thus meet the minimum requirements in terms of memory, CPU and GPU.
 
@@ -68,8 +68,7 @@ Each shell script will issue a series of network requests to a specific test URL
 
 #### Note for MS Windows users ####
 
-Sorry dudes, Windows is a nice toy for playing games and stuffs, but it's not a tool for Web Developers; If you are on a Windows machine, you'll have to use "Cygwin" (good luck with that) or do youserlf a favor and buy a Mac or install Linux..
-
+This code has been developed on a Mac and should work without any issues also on Linux. It's not been tested on a Windows machine, albeit Node.js and Git are available on that platform too, so it should be theoretically possible to build and run the server on that platform (maybe with a little bit of tweaking).
 
 ### Architecture ###
 
