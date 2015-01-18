@@ -5,7 +5,7 @@ var express = require("express"),
 	path = require("path"),
 	dgram = require('dgram'),
 	http = require("http"),
-	Measure = require('./services/Measure'),
+	MeasureFactory = require('./services/MeasureFactory'),
 	notFound = require('./lib/middleware/notFound'),
 	app = express();
 
@@ -35,7 +35,7 @@ require('./routes/widgetsRoutes').init(app);
 require('./routes/testMessages').init(app, io);
 
 //Initialise Measures Factory
-Measure.init();
+MeasureFactory.init();
 
 //Create Receiving UDP Socket
 socket = dgram.createSocket('udp4', onMessage);
@@ -62,6 +62,10 @@ function onSIOConnect (socket) {
 }
 
 function onMessage ( message ) {
+
+	io.sockets.emit("data:measures", {data:MeasureFactory.decodeMessage(message)});
+
+	/*
 	var length = message.length - 5; //avoid the prologue "DATAx";
 	var sentences = length / 36;
 
@@ -76,4 +80,5 @@ function onMessage ( message ) {
 	}
 
 	io.sockets.emit("data:measures", {data:measures});
+	*/
 }
