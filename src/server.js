@@ -62,23 +62,5 @@ function onSIOConnect (socket) {
 }
 
 function onMessage ( message ) {
-
 	io.sockets.emit("data:measures", {data:MeasureFactory.decodeMessage(message)});
-
-	/*
-	var length = message.length - 5; //avoid the prologue "DATAx";
-	var sentences = length / 36;
-
-	//console.log("MSG", message );
-	for (var i = 0; i < sentences; i++ ) {
-		var measure = Measure.get(Array.prototype.slice.call(message, (i*36)+5));
-
-		//console.log("measure[" + i + "]", measure);
-		if (measure) {
-			measures[measure.name] = measure.data;
-		}
-	}
-
-	io.sockets.emit("data:measures", {data:measures});
-	*/
 }

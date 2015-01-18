@@ -6,56 +6,6 @@ tash.namespace('Gauges.Widgets');
 
 Gauges.Widgets.verticalspeed = {
 
-	update: function (payload) {
-		//NOTE: when determining angle we need to
-		//      convert these absolute values into the local coord. system
-		//		that is, subtract 90deg (the zero position is 270deg)
-		var angles = {
-			/*
-			"10": 4,
-			"20": 10,
-			"30": 19,
-			"40": 29,
-			"50": 48,
-			"60": 71,
-			"70": 92,
-			"80": 116,
-			"90": 139,
-			"100": 165,
-			"110": 187,
-			"120": 208,
-			"130": 223,
-			"140": 238,
-			"150": 252,
-			"160": 266,
-			"170": 278,
-			"180": 288,
-			"190": 303,
-			"200": 316
-			*/
-			"0": 0
-		};
-
-		console.log("update", payload.verticalspeed);
-
-		var data = payload.verticalspeed,
-			speed = parseInt(data.speed,10);
-			/*
-			angleLowIdx = (parseInt(speed/10,10)-1)*10,
-			angleHiIdx = angleLowIdx+10,
-			angleLow = angles[angleLowIdx] || angles[0],
-			angleHi = angles[angleHiIdx] || angles[0],
-			remainder = angleLowIdx ? speed % angleLowIdx : 1,
-			increment = (angleHi - angleLow) / 10 * remainder;
-			*/
-
-		$(this.canvas).attr('data-speed', speed);
-		/*
-		this.dial.bitmap.rotation = this._convertIntoLocalCoord(angleLow + increment);
-		*/
-		this.dial.bitmap.rotation = this._convertIntoLocalCoord(this._calculateAngle(speed + this._calculateVariance(speed)));
-	},
-
 	render: function (/*data*/) {
 		//load the assets in sequence,
 		//to guarantee an ordered layering on the canvas
@@ -83,6 +33,14 @@ Gauges.Widgets.verticalspeed = {
 				this.update({verticalspeed:{speed:0}});
 			})
 			.start();
+	},
+
+	update: function (payload) {
+		var data = payload.verticalspeed,
+			speed = parseInt(data.speed,10);
+
+		$(this.canvas).attr('data-speed', speed);
+		this.dial.bitmap.rotation = this._convertIntoLocalCoord(this._calculateAngle(speed + this._calculateVariance(speed)));
 	},
 
 	_calculateAngle: function(speed) {
