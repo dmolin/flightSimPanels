@@ -36,8 +36,6 @@ Gauges.Widgets.verticalspeed = {
 			"0": 0
 		};
 
-		console.log("update", payload.verticalspeed);
-
 		var data = payload.verticalspeed,
 			speed = parseInt(data.speed,10);
 			/*
@@ -70,8 +68,8 @@ Gauges.Widgets.verticalspeed = {
 					load: function(img) {
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						img.bitmap.regX = 11;
-						img.bitmap.regY = 90;
+						img.bitmap.regX = 150;
+						img.bitmap.regY = 150;
 						img.bitmap.rotation = 270;
 						sequence.next();
 					}

@@ -14,8 +14,8 @@ Gauges.Widgets.enginerpm = {
 					load: function(img) {
 						img.bitmap.x = 150;
 						img.bitmap.y = 155;
-						img.bitmap.regX = 11;
-						img.bitmap.regY = 90;
+						img.bitmap.regX = 150;
+						img.bitmap.regY = 150;
 						img.bitmap.rotation = 0;
 						sequence.next();
 					}

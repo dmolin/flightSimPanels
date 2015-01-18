@@ -9,7 +9,7 @@ Gauges.Widgets.attitude = {
 			.add( this, function(sequence){
 				this.disc = new Gauges.Widgets.StageImage("assets/widget/attitude/attitude_disc", this, {
 					load: function(img) {
-						img.bitmap.regX = 108;
+						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
@@ -31,7 +31,7 @@ Gauges.Widgets.attitude = {
 			.add( this, function(sequence){
 				this.planeshape = new Gauges.Widgets.StageImage("assets/widget/attitude/attitude_planeshape", this, {
 					load: function(img){
-						img.bitmap.regX = 122;
+						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
