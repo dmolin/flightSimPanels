@@ -1,12 +1,12 @@
 /*
- * xtype: 37
- * name: Engine RPMs
+ * xtype: 13
+ * name: Flaps
  */
 module.exports = function(raw, Helper) {
     var dataView = new DataView(raw);
-    
+	
     var data = {
-    	rpm: Helper.fix(dataView.getFloat32(0,true))
+	   flaps: Helper.fix(dataView.getFloat32(16,true))
     };
     
     return data;
