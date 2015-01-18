@@ -1,6 +1,7 @@
 var fs = require('fs');
 var uglify = require('uglify-js');
-var Measure = require('../services/Measure');
+var Measure = require('../services/MeasureFactory'),
+    _ = require("underscore");
 
 function getCommonCode(list) {
     var file,
@@ -28,6 +29,7 @@ function getCommonCode(list) {
 }
 
 function getMeasureEntities(suffix, list) {
+    /*
     var measures = Measure.getRegisteredMeasures(),
         idx,
         measure;
@@ -40,6 +42,13 @@ function getMeasureEntities(suffix, list) {
             } catch( error ) {}
         }
     }
+    */
+    var measures = Measure.getRegisteredMeasures();
+    _.each(measures, function(measure) {
+        try {
+            list.push( fs.readFileSync(__dirname + '/../services/measures/' + measure + '/client/' + measure + '.' + suffix, 'utf8') );
+        } catch( error ) {}
+    });
     return list;
 }
 

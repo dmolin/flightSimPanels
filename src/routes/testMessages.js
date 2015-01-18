@@ -1,4 +1,4 @@
-Measure = require('../services/Measure');
+Measure = require('../services/MeasureFactory');
 
 var measures = {}, io;
 
@@ -15,18 +15,11 @@ module.exports = {
 function onMockFSMessage ( req, res ) {
     var measureName = req.params.measure;
 
-    console.log("measure", measureName);
-    console.log("measures", Measure.getRegisteredMeasures() );
-    var measure = findMeasureByName(Measure.getRegisteredMeasures(), measureName);
-    measure.data = mockMeasureData(req.query);
-
-    //console.log("measure[" + i + "]", measure);
-    if (measure) {
-        measures[measure.name] = measure.data;
-    }
-
-    io.sockets.emit("data:measures", {data:measures});
-
+    var measures = {};
+    console.log("name:" + measureName);
+    console.log("req.query" + req.query);
+    measures[measureName] = req.query;
+    io.sockets.emit("data:measures", {data: measures});
     res.end();
 }
 
