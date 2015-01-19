@@ -1,12 +1,12 @@
-tash.namespace('Gauges.Widgets');
+tash.namespace("Gauges.Widgets");
 
 Gauges.Widgets.dg = {
 
-	render: function (/*data*/) {
+	render: function () {
 		//Load resources in sequence.
 		//this guarantee a correct layering on the canvas
 		Gauges.Widgets.Sequence()
-			.add( this, function(sequence){
+			.add( this, function(sequence) {
 				this.disc = new Gauges.Widgets.StageImage("assets/widget/dg/dg_disc", this, {
 					load: function(img) {
 						img.bitmap.regX = 150;
@@ -19,7 +19,7 @@ Gauges.Widgets.dg = {
 			} )
 			.add( this, function(sequence) {
 				this.gear = new Gauges.Widgets.StageImage("assets/widget/dg/dg_gear", this, {
-					load: function(img){
+					load: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
@@ -28,21 +28,24 @@ Gauges.Widgets.dg = {
 					}
 				});
 			})
-			.add( this, this.publishReadyEvent )
+			.add( this, function(sequence) {
+				this.publishReadyEvent(sequence);
+				
+				this.update({ dg: { dg: 0 } });
+			})
 			.start();
-
 	},
 
 	update: function (payload) {
 		var data = payload.dg,
-			canvasEl = $(this.canvas);
+			magheading = parseFloat(data.magheading);
 
-		canvasEl.attr('data-magheading', data.magheading);
+		$(this.canvas).attr("data-magheading", magheading);
 		
-		this.disc.bitmap.rotation = -1 * parseFloat(data.magheading);
+		this.disc.bitmap.rotation = (-1 * magheading);
 	}
 
 };
 
 tash.util.mixin(Gauges.Widgets.dg, Gauges.Widgets.widget);
-Gauges.Widgets.widget.registerWidget(Gauges.Widgets.dg, 'dg');
+Gauges.Widgets.widget.registerWidget(Gauges.Widgets.dg, "dg");

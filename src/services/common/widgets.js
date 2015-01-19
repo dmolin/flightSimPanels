@@ -19,7 +19,9 @@ Gauges.Widgets.widget = (function(){
 
 	function onDataReady(data) {
 		if (this.selector && data[this.selector]) {
-			this.update(data);
+			if (typeof this.update == 'function') {
+				this.update(data);
+			}
 		}
 	}
 
@@ -27,7 +29,14 @@ Gauges.Widgets.widget = (function(){
 		if ( this.status === 'started' ) {
 			return;
 		}
-		this.render();
+		
+		if (typeof this.setup == 'function') {
+			this.setup();
+		}
+		
+		if (typeof this.render == 'function') {
+			this.render();
+		}
 	}
 
 	function stop() {

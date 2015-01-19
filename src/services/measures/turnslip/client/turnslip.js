@@ -1,8 +1,8 @@
-tash.namespace('Gauges.Widgets');
+tash.namespace("Gauges.Widgets");
 
 Gauges.Widgets.turnslip = {
 
-	render: function (/*data*/) {
+	render: function () {
 		//Load resources in sequence.
 		//this guarantee a correct layering on the canvas
 		Gauges.Widgets.Sequence()
@@ -50,22 +50,27 @@ Gauges.Widgets.turnslip = {
 					}
 				});
 			})
-			.add( this, this.publishReadyEvent )
+			.add( this, function(sequence) {
+				this.publishReadyEvent(sequence);
+				
+				this.update({ turnslip: { slip: 0, roll: 0 } });
+			})
 			.start();
 	},
 
 	update: function (payload) {
 		var data = payload.turnslip,
-			canvasEl = $(this.canvas);
+			slip = parseFloat(data.slip),
+			roll = parseFloat(data.roll);
 
-		canvasEl.attr('data-slip', data.slip);
-		canvasEl.attr('data-beta', data.beta);
+		$(this.canvas).attr("data-slip", slip);
+		$(this.canvas).attr("data-roll", roll);
 
-		this.planeshape.bitmap.rotation = parseFloat(data.roll);
-		this.ball.bitmap.x = 150 + parseFloat(data.slip * -10);
+		this.planeshape.bitmap.rotation = (1.3 * roll);
+		this.ball.bitmap.x = 150 + (slip * -10);
 	}
 
 };
 
 tash.util.mixin(Gauges.Widgets.turnslip, Gauges.Widgets.widget);
-Gauges.Widgets.widget.registerWidget(Gauges.Widgets.turnslip, 'turnslip');
+Gauges.Widgets.widget.registerWidget(Gauges.Widgets.turnslip, "turnslip");
