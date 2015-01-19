@@ -27,6 +27,8 @@ Gauges.Widgets.widget = (function(){
 		if ( this.status === 'started' ) {
 			return;
 		}
+		
+		this.setup();
 		this.render();
 	}
 
@@ -45,6 +47,9 @@ Gauges.Widgets.widget = (function(){
 		this.$el = $("<div id='" + this.id + "' class='gauge'></div>");
 		this.parent.append(this.$el);
 		return this.$el;
+	}
+
+	function setup(/*data*/) {
 	}
 
 	function render(/*data*/) {
@@ -76,6 +81,7 @@ Gauges.Widgets.widget = (function(){
 		init: init,
 		start: start,
 		stop: stop,
+		setup: setup,
 		render: render,
 		update: update,
 		tick: tick,

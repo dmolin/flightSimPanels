@@ -114,7 +114,7 @@ function _extractDatarefs(message, datarefProcessors) {
 		//extract each dataref block (removing the 5 bytes prefix)
 		payload = Array.prototype.slice.call(message, (i*36)+5);
 		xtype = payload[0];
-		console.log("processing xtype " + xtype);
+		//console.log("processing xtype " + xtype);
 		if(datarefProcessors[xtype]) {
 			dataref = new Int8Array(Array.prototype.splice.call(payload, 4, 32));
 			//decode the single dataref using the matching datarefProcessor
@@ -141,7 +141,7 @@ function _extractMeasures(measuresProcessors, decodedDatarefs) {
 		}
 	});
 
-	console.log("got measures", measures);
+	//console.log("got measures", measures);
 	return measures;
 }
 
