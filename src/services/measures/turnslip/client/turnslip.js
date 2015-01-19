@@ -51,6 +51,17 @@ Gauges.Widgets.turnslip = {
 				});
 			})
 			.add( this, function(sequence) {
+				this.inop = new Gauges.Widgets.StageImage("assets/widget/turnslip/inop", this, {
+					load: function(img) {
+						img.bitmap.regX = 150;
+						img.bitmap.regY = 150;
+						img.bitmap.x = 150;
+						img.bitmap.y = 150;
+						sequence.next();
+					}
+				});
+			})
+			.add( this, function(sequence) {
 				this.publishReadyEvent(sequence);
 				
 				this.update({ turnslip: { slip: 0, roll: 0 } });
