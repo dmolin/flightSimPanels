@@ -19,9 +19,7 @@ Gauges.Widgets.widget = (function(){
 
 	function onDataReady(data) {
 		if (this.selector && data[this.selector]) {
-			if (typeof this.update == 'function') {
-				this.update(data);
-			}
+			this.update(data);
 		}
 	}
 
@@ -30,13 +28,8 @@ Gauges.Widgets.widget = (function(){
 			return;
 		}
 		
-		if (typeof this.setup == 'function') {
-			this.setup();
-		}
-		
-		if (typeof this.render == 'function') {
-			this.render();
-		}
+		this.setup();
+		this.render();
 	}
 
 	function stop() {
@@ -54,6 +47,9 @@ Gauges.Widgets.widget = (function(){
 		this.$el = $("<div id='" + this.id + "' class='gauge'></div>");
 		this.parent.append(this.$el);
 		return this.$el;
+	}
+
+	function setup(/*data*/) {
 	}
 
 	function render(/*data*/) {
@@ -85,6 +81,7 @@ Gauges.Widgets.widget = (function(){
 		init: init,
 		start: start,
 		stop: stop,
+		setup: setup,
 		render: render,
 		update: update,
 		tick: tick,
