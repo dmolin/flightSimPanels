@@ -61,11 +61,7 @@ Gauges.Widgets.turnslip = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ turnslip: { slip: 0, roll: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

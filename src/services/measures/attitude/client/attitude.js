@@ -99,11 +99,7 @@ Gauges.Widgets.attitude = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ attitude: { pitch: 0, roll: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

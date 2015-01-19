@@ -75,11 +75,7 @@ Gauges.Widgets.speed = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ speed: { indicated: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

@@ -105,11 +105,7 @@ Gauges.Widgets.gear = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ gear: { gearN: 1, gearL: 1, gearR: 1 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

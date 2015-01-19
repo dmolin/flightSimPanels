@@ -28,11 +28,7 @@ Gauges.Widgets.flaps = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ flaps: { flaps: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

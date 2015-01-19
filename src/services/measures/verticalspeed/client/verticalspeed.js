@@ -82,11 +82,7 @@ Gauges.Widgets.verticalspeed = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ verticalspeed: { speed: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

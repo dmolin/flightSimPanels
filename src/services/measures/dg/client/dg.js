@@ -28,11 +28,7 @@ Gauges.Widgets.dg = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ dg: { dg: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 

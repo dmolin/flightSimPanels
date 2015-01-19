@@ -65,11 +65,7 @@ Gauges.Widgets.enginerpm = {
 					}
 				});
 			})
-			.add( this, function(sequence) {
-				this.publishReadyEvent(sequence);
-				
-				this.update({ enginerpm: { rpm: 0 } });
-			})
+			.add( this, this.publishReadyEvent )
 			.start();
 	},
 
