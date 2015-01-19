@@ -5,6 +5,6 @@
 module.exports = function(raw, Helper) {
     var dataView = new DataView(raw);
     return {
-        altitude: Helper.fix(dataView.getFloat32(0, true))
+        altitude: Helper.fix(dataView.getFloat32(20, true))
     };
 };
