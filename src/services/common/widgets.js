@@ -6,7 +6,6 @@ Gauges.Widgets.widget = (function(){
 	//var widgetRenderedEvent;
 
 	function init(context) {
-		console.log("widgets.init");
 		this.parent  = $(context.widgetsContext);
 		this.id = Gauges.Widgets.nextId();
 		this.getEl().empty().append( "<canvas width='310' height='310'></canvas>" );
@@ -27,7 +26,7 @@ Gauges.Widgets.widget = (function(){
 		if ( this.status === 'started' ) {
 			return;
 		}
-		
+
 		this.setup();
 		this.render();
 	}
@@ -67,9 +66,9 @@ Gauges.Widgets.widget = (function(){
 		Gauges.events.AppReady.subscribe(widget.init, widget);
 	}
 
-	function publishReadyEvent(sequence) {
+	function publishReadyEvent(done) {
 		var self = this;
-		sequence.done();
+		done();
 		Gauges.events.MeasuresUpdate.subscribe(function(data){
 			onDataReady.call(self, data);
 		});
@@ -93,18 +92,33 @@ Gauges.Widgets.widget = (function(){
 
 Gauges.Widgets.StageImage = function(url, widget, callbacks){
 	var context = this;
+	var cbPre  = ['load', 'beforeRender'];
+	var cbPost = ['next', 'afterRender'];
+
+	function _processCbs(list, callbacks) {
+		if(callbacks && list) {
+			list.forEach(function(type) {
+				if(typeof callbacks[type] === 'function') {
+					callbacks[type].call(widget, context);
+				}
+			});
+		}
+	}
+
 	this.image = new Image();
 	this.image.src = document.location.href + url;
 	this.image.addEventListener("load", function () {
 		context.bitmap = new createjs.Bitmap(context.image);
 		context.bitmap.x = 0;
 		context.bitmap.y = 0;
-		if(callbacks && typeof callbacks.load === 'function') {
-			callbacks.load.call(widget, context);
-		} else if (callbacks && typeof callbacks.next === 'function' ) {
-			callbacks.next.call(callbacks);
-		}
+
+		//let's check for hooks to call before the image is added to the state
+		_processCbs(cbPre, callbacks);
+
 		widget.stage.addChild(context.bitmap);
+
+		//let's check for hooks to call after the image has been added to the state
+		_processCbs(cbPost, callbacks);
 	});
 };
 
@@ -130,7 +144,7 @@ Gauges.Widgets.Sequence = function(){
 		next: function() {
 			var callback = queue.shift();
 			if(callback && typeof callback.callback === 'function') {
-				callback.callback.call(callback.context, def);
+				callback.callback.call(callback.context, this.next.bind(this) );
 			}
 		},
 

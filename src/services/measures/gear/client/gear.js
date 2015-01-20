@@ -6,103 +6,103 @@ Gauges.Widgets.gear = {
 		//Load resources in sequence.
 		//this guarantee a correct layering on the canvas
 		Gauges.Widgets.Sequence()
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearN_transit = new Gauges.Widgets.StageImage("assets/widget/gear/gearN_transit", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearN_down = new Gauges.Widgets.StageImage("assets/widget/gear/gearN_down", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearN_up = new Gauges.Widgets.StageImage("assets/widget/gear/gearN_up", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearL_transit = new Gauges.Widgets.StageImage("assets/widget/gear/gearL_transit", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearL_down = new Gauges.Widgets.StageImage("assets/widget/gear/gearL_down", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearL_up = new Gauges.Widgets.StageImage("assets/widget/gear/gearL_up", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearR_transit = new Gauges.Widgets.StageImage("assets/widget/gear/gearR_transit", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearR_down = new Gauges.Widgets.StageImage("assets/widget/gear/gearR_down", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gearR_up = new Gauges.Widgets.StageImage("assets/widget/gear/gearR_up", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
 			.add( this, this.publishReadyEvent )

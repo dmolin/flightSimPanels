@@ -6,59 +6,59 @@ Gauges.Widgets.turnslip = {
 		//Load resources in sequence.
 		//this guarantee a correct layering on the canvas
 		Gauges.Widgets.Sequence()
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.disc = new Gauges.Widgets.StageImage("assets/widget/turnslip/turnslip_disc", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			} )
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.ball = new Gauges.Widgets.StageImage("assets/widget/turnslip/turnslip_ball", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.gear = new Gauges.Widgets.StageImage("assets/widget/turnslip/turnslip_gear", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.planeshape = new Gauges.Widgets.StageImage("assets/widget/turnslip/turnslip_planeshape", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
-			.add( this, function(sequence) {
+			.add( this, function(done) {
 				this.inop = new Gauges.Widgets.StageImage("assets/widget/turnslip/inop", this, {
-					load: function(img) {
+					beforeRender: function(img) {
 						img.bitmap.regX = 150;
 						img.bitmap.regY = 150;
 						img.bitmap.x = 150;
 						img.bitmap.y = 150;
-						sequence.next();
-					}
+					},
+					afterRender: done
 				});
 			})
 			.add( this, this.publishReadyEvent )
