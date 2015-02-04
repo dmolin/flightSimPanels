@@ -31,7 +31,10 @@ function getCommonCode(list) {
 function getMeasureEntities(suffix, list) {
 
     //until we have a layout editor, this is the low and dirty way to have a layout of widgets...
-    var order = ['speed', 'attitude', 'altitude', 'turnslip', 'dg', 'verticalspeed'];
+    var order = {
+        js: ['speed', 'attitude', 'altitude', 'turnslip', 'dg', 'verticalspeed']
+    };
+
     var widgets = {};
 
     var measures = Measure.getRegisteredMeasures();
@@ -42,10 +45,12 @@ function getMeasureEntities(suffix, list) {
     });
 
     //order the list
-    order.forEach(function(name) {
-        list.push(widgets[name]);
-        delete (widgets[name]);
-    });
+    if(order[suffix]) {
+        order[suffix].forEach(function(name) {
+            list.push(widgets[name]);
+            delete (widgets[name]);
+        });
+    }
     //add the remaining ones, if any
     _.each(_.keys(widgets), function(key) {
         list.push(widgets[key]);
