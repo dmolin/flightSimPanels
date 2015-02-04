@@ -29,25 +29,26 @@ function getCommonCode(list) {
 }
 
 function getMeasureEntities(suffix, list) {
-    /*
-    var measures = Measure.getRegisteredMeasures(),
-        idx,
-        measure;
-    for(idx in measures) {
-        if(measures.hasOwnProperty(idx)){
-            measure = measures[idx];
-            try {
-                list.push( fs.readFileSync(__dirname + '/../services/measures/' + measure.name + '/client/' + measure.name + '.' + suffix, 'utf8') );
-                //list.push(uglify.minify(__dirname + '/../services/measures/' + measure.name + '/client/' + measure.name + '.' + suffix, 'utf8').code);
-            } catch( error ) {}
-        }
-    }
-    */
+
+    //until we have a layout editor, this is the low and dirty way to have a layout of widgets...
+    var order = ['speed', 'attitude', 'altitude', 'turnslip', 'dg', 'verticalspeed'];
+    var widgets = {};
+
     var measures = Measure.getRegisteredMeasures();
     _.each(measures, function(measure) {
         try {
-            list.push( fs.readFileSync(__dirname + '/../services/measures/' + measure + '/client/' + measure + '.' + suffix, 'utf8') );
+            widgets[measure] = ( fs.readFileSync(__dirname + '/../services/measures/' + measure + '/client/' + measure + '.' + suffix, 'utf8') );
         } catch( error ) {}
+    });
+
+    //order the list
+    order.forEach(function(name) {
+        list.push(widgets[name]);
+        delete (widgets[name]);
+    });
+    //add the remaining ones, if any
+    _.each(_.keys(widgets), function(key) {
+        list.push(widgets[key]);
     });
     return list;
 }
