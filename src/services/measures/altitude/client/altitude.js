@@ -78,7 +78,7 @@ Gauges.Widgets.altitude = {
 	update: function (payload) {
 		var data = payload.altitude,
 			altitude = Math.round(parseFloat(data.altitude)),
-			baro = parseFloat(data.pressures.baro);
+			baro = parseFloat(data.baro);
 
 		$(this.canvas).attr("data-altitude", altitude);
 		$(this.canvas).attr("data-baro", baro);
