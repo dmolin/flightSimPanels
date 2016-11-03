@@ -94,7 +94,7 @@ The codebase is organized around these technologies/frameworks:
 - Websockets via Socket.IO
 - Pluggable component architecture with automatic discovery of new widgets
 
-The Server is run by the Railway framework, simplifying the serving of dynamic pages with the addition of a templating engine, routing and an easy to grasp MVC-based architecture.
+The Server is run by the Express framework, simplifying the serving of dynamic pages with the addition of a templating engine and routing.
 Socket.IO is used to communicate in realtime with connected browsers and send them periodic updates.
 Each time a packet is received from the Flight Simulator, the raw binary data is transformed into a complete JSON packet and sent over the Websocket channels to all connected clients.
 
