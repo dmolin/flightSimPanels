@@ -28,11 +28,11 @@ function getCommonCode(list) {
     return list;
 }
 
-function getMeasureEntities(suffix, list) {
+function getMeasureEntities(suffix, names, list, fill) {
 
     //until we have a layout editor, this is the low and dirty way to have a layout of widgets...
     var order = {
-        js: ['speed', 'attitude', 'altitude', 'turnslip', 'dg', 'verticalspeed']
+        js: names
     };
 
     var widgets = {};
@@ -51,10 +51,12 @@ function getMeasureEntities(suffix, list) {
             delete (widgets[name]);
         });
     }
-    //add the remaining ones, if any
-    _.each(_.keys(widgets), function(key) {
-        list.push(widgets[key]);
-    });
+    if (fill) {
+      //add the remaining ones, if any
+      _.each(_.keys(widgets), function(key) {
+          list.push(widgets[key]);
+      });
+    }
     return list;
 }
 
@@ -62,35 +64,37 @@ function getMeasureEntities(suffix, list) {
 /**
  * This operation has to be moved at build time, along with CSS and templates parsing
  */
-function addWidgets() {
+function addWidgets(names, fill) {
     //add the registered widgets code to the page
     var scripts = [];
     getCommonCode(scripts);
-    getMeasureEntities('js', scripts);
+    getMeasureEntities('js', names, scripts, fill);
     return scripts.join('\n');
 }
 
-function addCss() {
+function addCss(names) {
     //add the registered widgets code to the page
     var scripts = [];
-    getMeasureEntities('css', scripts);
+    getMeasureEntities('css', names, scripts, fill);
     return scripts.join('\n');
 }
-
 
 function getCode(req, res) {
     res.setHeader('Content-Type', 'application/javascript');
-    res.send(addWidgets());
+    if (req.params.name != undefined && req.params.name != "") {
+        res.send(addWidgets([req.params.name]));
+    }
+    res.send(addWidgets(['speed', 'attitude', 'altitude', 'turnslip', 'dg', 'verticalspeed'], true));
 }
-
 
 function getCss(req, res) {
     res.setHeader('Content-Type', 'text/css');
-    res.send(addCss());
+    res.send(addCss(['speed', 'attitude', 'altitude', 'turnslip', 'dg', 'verticalspeed'], true));
 }
 
 exports.init = function (app) {
     app.get('/widgets/code', getCode);
+    app.get('/widgets/code/:name', getCode);
     app.get('/widgets/css', getCss);
     return this;
 };

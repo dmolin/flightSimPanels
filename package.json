@@ -1,26 +1,25 @@
 {
     "name": "flightSimPanels",
     "main": "server.js",
-    "engines": ["node >= 0.10.0"],
+    "engines": [
+        "node >= 0.10.0"
+    ],
     "version": "0.0.2",
-
     "scripts": {
         "start": "grunt serve"
     },
-
     "devDependencies": {
-        "grunt":  "~0.4.4",
+        "grunt": "~0.4.4",
         "grunt-contrib-jshint": "~0.1.0",
         "grunt-contrib-watch": "~0.1.0",
         "grunt-jasmine-task": "~0.2.3",
-        "uglify-js":        "*",
+        "uglify-js": "*",
         "mocha": "~1.17.1",
         "supertest": "~0.9.0",
         "grunt-cafe-mocha": "~0.1.12"
     },
-
-    "dependencies" : {
-        "express" : "~3.1.0",
+    "dependencies": {
+        "express": "~3.1.0",
         "socket.io": "~0.9.0",
         "underscore": "*"
     }
