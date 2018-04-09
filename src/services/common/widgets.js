@@ -106,7 +106,7 @@ Gauges.Widgets.StageImage = function(url, widget, callbacks){
 	}
 
 	this.image = new Image();
-	this.image.src = document.location.href + url;
+	this.image.src = "http://" + location.host + "/" + url;
 	this.image.addEventListener("load", function () {
 		context.bitmap = new createjs.Bitmap(context.image);
 		context.bitmap.x = 0;

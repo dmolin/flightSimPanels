@@ -50,17 +50,17 @@ Gauges.Widgets.turnslip = {
 					afterRender: done
 				});
 			})
-			.add( this, function(done) {
-				this.inop = new Gauges.Widgets.StageImage("assets/widget/turnslip/inop", this, {
-					beforeRender: function(img) {
-						img.bitmap.regX = 150;
-						img.bitmap.regY = 150;
-						img.bitmap.x = 150;
-						img.bitmap.y = 150;
-					},
-					afterRender: done
-				});
-			})
+			// .add( this, function(done) {
+			// 	this.inop = new Gauges.Widgets.StageImage("assets/widget/turnslip/inop", this, {
+			// 		beforeRender: function(img) {
+			// 			img.bitmap.regX = 150;
+			// 			img.bitmap.regY = 150;
+			// 			img.bitmap.x = 150;
+			// 			img.bitmap.y = 150;
+			// 		},
+			// 		afterRender: done
+			// 	});
+			// })
 			.add( this, this.publishReadyEvent )
 			.start();
 	},
